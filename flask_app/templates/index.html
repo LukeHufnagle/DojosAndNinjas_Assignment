@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Dojos And Ninjas</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        display: flex;
+        justify-content: space-between;
+    }
+    .btn{
+        width: 120px;
+        height: 30px;
+        border: none;
+        border-radius: 10px;
+        background-color: crimson;
+        color: white;
+
+    }
+    #dojoList{
+        border: 2px solid black;
+    }
+</style>
+<body>
+    <div class="container">
+        <div id="leftContainer">
+            <h1>New Dojo</h1>
+            <form action="/create_dojo" method="POST">Name:
+                <input type="text" name='dname'>
+                <input type="submit" Value='Create Dojo' class="btn">
+            </form>
+        </div>
+        <div id="rightContainer">
+            <h1>All Dojos</h1>
+            <ul id="dojoList">
+                {% for one_dojo in dojos %}
+                <li>
+                    <a href="/show_dojo/{{one_dojo.id}}">{{one_dojo.name}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <a href="/add_ninja">Add a Ninja</a>
+        </div>
+    </div>
+</body>
+</html>
